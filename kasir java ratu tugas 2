@@ -1,0 +1,73 @@
+import java.util.Scanner;
+//RATU QURRATUL AINI
+//NIM = 1237050084
+//PDP KELAS D
+class Kasir{
+    public static void main(String[] argumen) {
+        //NILAI DATA BOLEAN UNTUK MENJALANKAN PROGRAM
+        boolean programKasirBerjalan = true;
+        //INPUT UNTUK MEMANGGIL NILAI DATA
+        Scanner inputPengguna = new Scanner(System.in);
+        int totalBarang1 = 0;
+        int totalBarang2 = 0;
+        int totalBarang3 = 0;
+        int totalBarang4 = 0;
+        int totalDibayar = 0;
+        String daftarMenu;
+
+        //UNTUK MEMULAI LOOP
+        while (programKasirBerjalan) {
+            //PENAMPILAN PROGRAM
+            daftarMenu = "=======================================\n";
+            daftarMenu += "Selamat datang di toko kue kita, berikut daftar menu:\n";
+            daftarMenu += "1. mochi choco (Rp 20.000) - " + totalBarang1 + "\n";
+            daftarMenu += "2. mochi bites (Rp 20.000) - " + totalBarang2 + "\n";
+            daftarMenu += "3. mochi DIY (Rp 25.000) - " + totalBarang3 + "\n";
+            daftarMenu += "4. mochi strawberry (Rp 30.000) - " + totalBarang4 + "\n";
+            daftarMenu += "5. chekout dan akhiri programn\n";
+            daftarMenu += "0. Program kasir ini tidak jelas, keluar aja deh.\n";
+            daftarMenu += "=======================================\n\n";
+            daftarMenu += "Pilih nomor barang (1 / 2 / 3 / 4):";
+            System.out.println(daftarMenu);
+            //UNTUK MENANGGIL INTEGER
+            int nomorBarangDibeli = inputPengguna.nextInt();
+            
+            //UNTUK MENANGANI TANGGAPAN ATAU KEAADAAN
+            if (nomorBarangDibeli >= 1 && nomorBarangDibeli <= 4) {
+                //AKAN TEREKSEKUSI JIKA MEMILIH MENU 1-4
+                System.out.println("Barang nomor " + nomorBarangDibeli + " dipilih\nMau berapa banyak ?");
+                int kuantitasBarangDibeli = inputPengguna.nextInt();
+
+                System.out.println("Barang nomor " + nomorBarangDibeli + " dibeli sejumlah " + kuantitasBarangDibeli + " buah");
+
+                //MENGHITUNG TOTAL
+                switch (nomorBarangDibeli) {
+                    case 1:
+                        totalBarang1 += kuantitasBarangDibeli;
+                        totalDibayar += (kuantitasBarangDibeli * 20000);
+                        break;
+                    case 2:
+                        totalBarang2 += kuantitasBarangDibeli;
+                        totalDibayar += (kuantitasBarangDibeli * 20000);
+                        break;
+                    case 3:
+                        totalBarang3 += kuantitasBarangDibeli;
+                        totalDibayar += (kuantitasBarangDibeli * 25000);
+                        break;
+                    case 4:
+                        totalBarang4 += kuantitasBarangDibeli;
+                        totalDibayar += (kuantitasBarangDibeli * 30000);
+                        break;
+                }
+            //JIKA MEMILIH NO 5 DAN 0 LOOPING BERAKHIR
+            } else if (nomorBarangDibeli == 5) {
+                programKasirBerjalan = false;
+                System.out.println("Total belanjaan anda : Rp. "+totalDibayar);
+                System.out.println("Terima kasih telah menggunakan layanan kami!");
+            } else if (nomorBarangDibeli == 0) {
+                System.out.println("bye byeee");
+            }
+        }
+        inputPengguna.close();
+    }
+}
